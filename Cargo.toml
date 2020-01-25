@@ -1,0 +1,7 @@
+[package]
+name = "project_euler"
+version = "0.1.0"
+authors = ["iambillmccann"]
+
+[dependencies]
+stopwatch = "0.0.7"
