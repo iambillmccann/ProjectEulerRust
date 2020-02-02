@@ -1,4 +1,3 @@
-pub mod problems;
 pub mod math_library;
 
 // mod premutations {
@@ -41,3 +40,5 @@ pub mod utilities {
     }
 
 }
+
+pub mod problems;
