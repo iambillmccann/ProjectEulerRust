@@ -3,8 +3,8 @@ extern crate project_euler;
 
 use stopwatch::{Stopwatch};
 use std::io;
-use project_euler::euler_library::problems::*;
-use project_euler::euler_library::utilities;
+use crate::project_euler::euler_library::problems::*;
+use crate::project_euler::euler_library::utilities;
 
 const LAST_PROBLEM: i32 = 8;
 
@@ -57,20 +57,20 @@ fn check_user_input(user_input: String) -> i32 {
 /// This is the main program
 fn main() {
 
-    let mut problem: i32 = get_user_input();
+    let mut problem_number: i32 = get_user_input();
 
-    while problem > 0 {
+    while problem_number > 0 {
 
         let mut total_time = Stopwatch::start_new();
-        let result: String = problem_factory::get_solution(problem);
+        let result: String = problem_factory::get_solution(problem_number);
         total_time.stop();
 
         println!("-----------------------------------------------------------------");
-        println!("Solution to problem {} = {}", problem, result);
+        println!("Solution to problem {} = {}", problem_number, result);
         println!("Execution time was {}", utilities::format_milliseconds(total_time.elapsed_ms()));
         println!("-----------------------------------------------------------------");
 
-        problem = get_user_input();
+        problem_number = get_user_input();
 
     }
 

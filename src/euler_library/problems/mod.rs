@@ -1,11 +1,20 @@
+use crate::euler_library::math_library::*;
+
+pub trait IEulerSolution {
+    fn compute(&self, problem_number: i32) -> String;
+}
+
 // The problem_factory module is a class implementing a classic factory pattern
 // to instantiate problem solutions
 pub mod problem_factory {
 
+    use euler_library::problems::IEulerSolution;
+
     // get_solution is the factory method for creating a solution to each problem
     pub fn get_solution(problem_number: i32) -> String {
+
         match problem_number {
-            1 => super::multiple_3or5::compute(),
+            1 => super::Mulitple3or5.compute(),
             2 => super::even_fibonacci::compute(),
             3 => super::largest_prime_factor::compute(),
             4 => super::largest_palindrome_product::compute(),
@@ -19,6 +28,44 @@ pub mod problem_factory {
     
 }
 
+pub struct GenericSolution;
+impl IEulerSolution for GenericSolution {
+    fn compute (&self, problem_number: i32) -> String { "Problem ".to_owned() + &problem_number.to_string() + " is not solved." }
+}
+
+/// <summary>
+/// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
+/// Find the sum of all the multiples of 3 or 5 below 1000.
+/// </summary>
+/// <returns>return the answer to the problem</returns>
+pub struct Mulitple3or5;
+impl Mulitple3or5 {
+
+    pub fn brute_force() -> String {
+        let mut result: u64 = 0;
+        for number in 1..1000 {
+            result = result + if is_multiple(number, 3) {
+                number
+            } else if is_multiple(number, 5) { 
+                number
+            } else { 0 };
+        }
+        result.to_string()
+    }
+
+}
+
+impl IEulerSolution for Mulitple3or5 {
+
+    fn compute(&self, problem_number: i32) -> String {
+        let sum_3s = arithmetic_progression(999/3, 3, 3);
+        let sum_5s = arithmetic_progression(999/5, 5, 5);
+        let sum_15s = arithmetic_progression(999/15, 15, 15);
+        let result = sum_3s + sum_5s - sum_15s;
+        result.to_string()
+    }
+
+}
 
 pub mod largest_product_series {
 
@@ -44,35 +91,6 @@ pub mod largest_product_series {
         }
         result.to_string()
 
-    }
-
-}
-
-/// <summary>
-/// If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
-/// Find the sum of all the multiples of 3 or 5 below 1000.
-/// </summary>
-/// <returns>return the answer to the problem</returns>
-pub mod multiple_3or5 {
-
-    pub fn brute_force() -> String {
-        let mut result: u64 = 0;
-        for number in 1..1000 {
-            result = result + if ::euler_library::math_library::is_multiple(number, 3) {
-                number
-            } else if ::euler_library::math_library::is_multiple(number, 5) { 
-                number
-            } else { 0 };
-        }
-        result.to_string()
-    }
-
-    pub fn compute() -> String {
-        let sum_3s = ::euler_library::math_library::arithmetic_progression(999/3, 3, 3);
-        let sum_5s = ::euler_library::math_library::arithmetic_progression(999/5, 5, 5);
-        let sum_15s = ::euler_library::math_library::arithmetic_progression(999/15, 15, 15);
-        let result = sum_3s + sum_5s - sum_15s;
-        result.to_string()
     }
 
 }
