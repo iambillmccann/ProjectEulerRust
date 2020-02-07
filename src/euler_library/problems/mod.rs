@@ -55,22 +55,11 @@ pub mod largest_product_series {
 /// <returns>return the answer to the problem</returns>
 pub mod multiple_3or5 {
 
-    pub fn brute_force() -> String {
-        let mut result: u64 = 0;
-        for number in 1..1000 {
-            result = result + if ::euler_library::math_library::is_multiple(number, 3) {
-                number
-            } else if ::euler_library::math_library::is_multiple(number, 5) { 
-                number
-            } else { 0 };
-        }
-        result.to_string()
-    }
-
     pub fn compute() -> String {
-        let sum_3s = ::euler_library::math_library::arithmetic_progression(999/3, 3, 3);
-        let sum_5s = ::euler_library::math_library::arithmetic_progression(999/5, 5, 5);
-        let sum_15s = ::euler_library::math_library::arithmetic_progression(999/15, 15, 15);
+        let range_size : u64 = 1000 - 1;
+        let sum_3s = ::euler_library::math_library::arithmetic_progression(range_size / 3, 3, 3);
+        let sum_5s = ::euler_library::math_library::arithmetic_progression(range_size / 5, 5, 5);
+        let sum_15s = ::euler_library::math_library::arithmetic_progression(range_size / 15, 15, 15);
         let result = sum_3s + sum_5s - sum_15s;
         result.to_string()
     }

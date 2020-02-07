@@ -1,9 +1,8 @@
 pub fn arithmetic_progression(number_of_terms: u64, first_term: u64, difference: u64) -> u64 {
-    let fnumber_of_terms = number_of_terms as f64;
-    let ffirst_term = first_term as f64;
-    let fdifference = difference as f64;
-    let result = (fnumber_of_terms / 2.0) * ( (2.0 * ffirst_term) + ((fnumber_of_terms - 1.0) * fdifference) );
-    result as u64
+
+    let last_term: u64 = first_term + difference * (number_of_terms - 1);
+    let arithmetic_series: u64 = number_of_terms * (first_term + last_term) / 2;
+    arithmetic_series
 }
 
 pub fn get_factors_for(number: u64) -> Vec<u64> {
