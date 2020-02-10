@@ -11,13 +11,13 @@ const LAST_PROBLEM: i32 = 8;
 /// getUserInput is a simple method for reading from the console.
 /// Returns: A string that represents the user's input.
 fn get_user_input() -> i32 {
-    let mut problem = String::new();
+    let mut problem_number = String::new();
 
     println!("\nWhat problem shall I run? Or type 'Q' to quit. ");
-    io::stdin().read_line(&mut problem)
+    io::stdin().read_line(&mut problem_number)
         .expect("Oops. Something went wrong when getting the problem number.");
 
-    check_user_input(problem)
+    check_user_input(problem_number)
 }
 
 /// checkUserInput will validate the user's input. This is a very redimentary
