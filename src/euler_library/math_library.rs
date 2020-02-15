@@ -6,7 +6,7 @@ pub fn arithmetic_progression(number_of_terms: u64, first_term: u64, difference:
 }
 
 pub fn get_factors_for(number: u64) -> Vec<u64> {
-    let prime_numbers = get_prime(10000000);
+    let prime_numbers = get_prime(10000);
     get_factors_with(number, prime_numbers)
 }
 

@@ -19,7 +19,6 @@ pub mod problem_factory {
     
 }
 
-
 pub mod largest_product_series {
 
     pub fn compute() -> String {
@@ -125,12 +124,15 @@ pub mod largest_palindrome_product {
 pub mod largest_prime_factor {
     pub fn compute() -> String {
         let value = 600851475143;
-        let factors: Vec<u64> = ::euler_library::math_library::get_factors_for(value);
+        let factors: Vec<u64> = ::euler_library::math_library::get_factors_with(value, ::euler_library::math_library::get_prime(10000));
         let result = factors[factors.len() - 1]; 
         result.to_string()
     }
 }
 
+///
+/// 10,0001th Prime number
+/// 
 pub mod prime10001 {
     pub fn compute() -> String {
         let prime_numbers = ::euler_library::math_library::get_prime(110000);
@@ -138,7 +140,6 @@ pub mod prime10001 {
         result.to_string()
     }
 }
-
 
 /// <summary>
 /// 2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.
