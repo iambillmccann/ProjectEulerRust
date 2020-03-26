@@ -32,4 +32,22 @@ pub mod test_math_library {
         assert_eq!(math_library::is_multiple(37, 66), false);
     }
 
+    #[test]
+    fn compute_square() {
+        assert_eq!(math_library::square(5), 25);
+        assert_eq!(math_library::square(0), 0);
+    }
+
+    #[test]
+    fn compute_sum_natural() {
+        assert_eq!(math_library::sum_natural(10), 55);
+        assert_eq!(math_library::sum_natural(0), 0);
+    }
+
+    #[test]
+    fn compute_sum_squares() {
+        assert_eq!(math_library::sum_natural_squares(10), 385);
+        assert_eq!(math_library::sum_natural_squares(0), 0);
+    }
+
 }
