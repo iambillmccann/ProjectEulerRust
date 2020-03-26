@@ -42,6 +42,7 @@ fn check_user_input(user_input: String) -> i32 {
             get_user_input()
         }
     };
+
     if result < 0 {
         println!("\nBTW, problem numbers are positive integers.");
         result = get_user_input();
@@ -54,24 +55,35 @@ fn check_user_input(user_input: String) -> i32 {
 
 }
 
+/// run_problems is the main program logic, it uses a recursive loop to get input and
+/// select a problem number.
+/// 
+/// Args
+///    problem_number  The Project Euler problem number chosen by the user
+/// 
+/// Returns
+///    The value zero 
+fn run_problem(problem_number: i32) -> i32 {
+
+    if problem_number < 1 { return 0 }
+
+    let mut total_time = Stopwatch::start_new();
+    let result: String = problem_factory::get_solution(problem_number);
+    total_time.stop();
+
+    println!("-----------------------------------------------------------------");
+    println!("Solution to problem {} = {}", problem_number, result);
+    println!("Execution time was {}", utilities::format_milliseconds(total_time.elapsed_ms()));
+    println!("-----------------------------------------------------------------");
+
+    run_problem(get_user_input())
+
+}
+
 /// This is the main program
 fn main() {
 
-    let mut problem: i32 = get_user_input();
-
-    while problem > 0 {
-
-        let mut total_time = Stopwatch::start_new();
-        let result: String = problem_factory::get_solution(problem);
-        total_time.stop();
-
-        println!("-----------------------------------------------------------------");
-        println!("Solution to problem {} = {}", problem, result);
-        println!("Execution time was {}", utilities::format_milliseconds(total_time.elapsed_ms()));
-        println!("-----------------------------------------------------------------");
-
-        problem = get_user_input();
-
-    }
+    run_problem(get_user_input());
+    println!("Goodbye");
 
 }
