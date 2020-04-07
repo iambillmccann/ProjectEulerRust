@@ -94,6 +94,14 @@ pub fn series_product(numbers: Vec<u64>) -> u64 {
     result
 }
 
+pub fn series_sum(numbers: Vec<u64>) -> u64 {
+    let mut result: u64 = 0;
+    for number in numbers {
+        result = result + number;
+    }
+    result
+}
+
 pub fn square(number: u64) -> u64 { number * number }
 
 pub fn sum_natural(number: u64) -> u64 {
