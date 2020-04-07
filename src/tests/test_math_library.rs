@@ -50,4 +50,34 @@ pub mod test_math_library {
         assert_eq!(math_library::sum_natural_squares(0), 0);
     }
 
+    #[test]
+    fn compute_get_prime() {
+        let actual: Vec<u64> = math_library::get_prime(20);
+        let expected: Vec<u64> = vec![2, 3, 5, 7, 11, 13, 17, 19];
+        assert_eq!(expected, actual);
+
+        assert_eq!(9, (math_library::get_prime(23)).len());
+
+        let expected: u64 = 7919;
+        let prime_numbers: Vec<u64> = math_library::get_prime(7920);
+        let actual: u64 = prime_numbers[prime_numbers.len() - 1];
+        assert_eq!(expected, actual);
+    }
+
+    #[test]
+    fn compute_series_product() {
+        let numbers: Vec<u64> = vec![2, 3, 4, 5];
+        assert_eq!(120, math_library::series_product(numbers));
+        let numbers: Vec<u64> = vec![0, 999, 33, 10];
+        assert_eq!(0, math_library::series_product(numbers));
+        let numbers: Vec<u64> = vec![9, 9, 8, 9];
+        assert_eq!(5832, math_library::series_product(numbers));
+    }
+
+    #[test]
+    fn compute_series_sum() {
+        let numbers: Vec<u64> = vec![2, 3, 5, 7];
+        assert_eq!(17, math_library::series_sum(numbers));
+    }
+
 }

@@ -13,6 +13,8 @@ pub mod problem_factory {
             6 => super::sum_square_difference::compute(),
             7 => super::prime10001::compute(),
             8 => super::largest_product_series::compute(),
+            9 => super::pythagorean_triplet::compute(),
+            10 => super::summation_primes::compute(),
             _ => "Problem ".to_owned() + &problem_number.to_string() + " is not solved.",
         }
     }
@@ -173,5 +175,45 @@ pub mod smallest_multiple {
 pub mod sum_square_difference{
     pub fn compute() -> String {
         (::euler_library::math_library::square(::euler_library::math_library::sum_natural(100)) - ::euler_library::math_library::sum_natural_squares(100)).to_string()
+    }
+}
+
+/// <summary>
+/// A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+/// a^2 + b^2 = c^2
+/// For example, 3^2 + 4^2 = 9 + 16 = 25 = 5^2.
+/// There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+/// Find the product abc.
+/// </summary>
+/// <returns></returns>
+pub mod pythagorean_triplet{
+    pub fn compute() -> String {
+        
+        for a in 1 .. 334 {
+            let mut done: bool = false;
+            let mut b: u64 = a + 1;
+            while !done {
+                let c: u64 = 1000 - (a + b);
+                if ::euler_library::math_library::square(a) + ::euler_library::math_library::square(b) == ::euler_library::math_library::square(c) {
+                    return (a * b * c).to_string();
+                }
+                b += 1;
+                if b >= c { done = true }
+            }
+        }
+
+        "No result found".to_string()
+    }
+}
+
+/// <summary>
+/// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+/// Find the sum of all the primes below two million.
+/// </summary>
+/// <returns></returns>
+pub mod summation_primes{
+    pub fn compute() -> String {
+        let prime_numbers: Vec<u64> = ::euler_library::math_library::get_prime(2000000);
+        (::euler_library::math_library::series_sum(prime_numbers)).to_string()
     }
 }
