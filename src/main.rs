@@ -6,7 +6,7 @@ use std::io;
 use project_euler::euler_library::problems::*;
 use project_euler::euler_library::utilities;
 
-const LAST_PROBLEM: i32 = 10;
+const LAST_PROBLEM: i32 = 11;
 
 /// getUserInput is a simple method for reading from the console.
 /// Returns: A string that represents the user's input.
