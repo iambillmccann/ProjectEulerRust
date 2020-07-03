@@ -5,6 +5,27 @@ pub fn arithmetic_progression(number_of_terms: u64, first_term: u64, difference:
     arithmetic_series
 }
 
+/// <summary>
+/// This method returns a collection of divisors for a given number
+/// </summary>
+/// <param name="number">The number being factored</param>
+/// <returns>vector of divisors</returns>
+pub fn get_divisors(number: u64) -> Vec<u64> {
+    let mut divisors: Vec<u64> = Vec::new();
+    let fnumber: f64 = number as f64;
+    let limit: u64 = fnumber.sqrt().ceil() as u64 + 1;
+
+    for iterate in 1..limit {
+        let divisor: u64 = iterate as u64;
+        if is_multiple(number, divisor) {
+            divisors.push(divisor);
+            let quotient: u64 = number / divisor;
+            if divisor != quotient && number != divisor { divisors.push(quotient) }
+        }
+    }
+    return divisors
+}
+
 pub fn get_factors_for(number: u64) -> Vec<u64> {
     let prime_numbers = get_prime(10000);
     get_factors_with(number, prime_numbers)

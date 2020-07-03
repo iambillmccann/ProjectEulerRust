@@ -80,4 +80,21 @@ pub mod test_math_library {
         assert_eq!(17, math_library::series_sum(numbers));
     }
 
+    #[test]
+    fn compute_get_divisors() {
+        let actual: Vec<u64> = math_library::get_divisors(1);
+        let expected: Vec<u64> = vec![1];
+        assert_eq!( actual, expected );
+        let actual: Vec<u64> = math_library::get_divisors(3);
+        let expected: Vec<u64> = vec![1, 3];
+        assert_eq!( actual, expected );
+        let actual: Vec<u64> = math_library::get_divisors(28);
+        assert!(actual.contains(&1) &&
+                actual.contains(&2) &&
+                actual.contains(&4) &&
+                actual.contains(&7) &&
+                actual.contains(&14) &&
+                actual.contains(&28))
+    }
+
 }
