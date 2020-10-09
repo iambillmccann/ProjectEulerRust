@@ -17,6 +17,7 @@ pub mod problem_factory {
             10 => super::summation_primes::compute(),
             11 => super::largest_product_grid::compute(),
             12 => super::highly_divisible_triangle::compute(),
+            13 => super::large_sum::compute(),
             _ => "Problem ".to_owned() + &problem_number.to_string() + " is not solved.",
         }
     }
@@ -342,4 +343,10 @@ pub mod highly_divisible_triangle{
         }
         triangle.to_string()
     }
+}
+
+pub mod large_sum {
+    pub fn compute() -> String {
+        "Hello World".to_string()
+    }    
 }
