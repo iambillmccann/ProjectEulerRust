@@ -103,17 +103,39 @@
 // 20849603980134001723930671666823555245252804609722
 // 53503534226472524250874054075591789781264330331690
 // 
-const RADIX: usize = 10;
+
+// The following function is provided because I couldn't
+// get the builtin .to_digit function to compile.
+// At some point this should be changed over to the builtin
+// to_digit method.
+fn char2digit(item: char) -> u32 {
+    match item {
+        '0' => return 0,
+        '1' => return 1,
+        '2' => return 2,
+        '3' => return 3,
+        '4' => return 4,
+        '5' => return 5,
+        '6' => return 6,
+        '7' => return 7,
+        '8' => return 8,
+        '9' => return 9,
+        _   => return 0
+    }
+}
 
 fn get_digits(number: String) -> Vec<u32> {
     let mut digits: Vec<u32> = Vec::new();
     let mut index: u32 = 0;
     for item in number.chars() {
-        digits[index] = item.to_digit(RADIX)
+        println!("The digit for index {} is {}", index, item);
+        digits.push( char2digit(item) );
+        index = index + 1
     }
     digits
 }
 
 pub fn compute() -> String {
+    get_digits("0123456789".to_string());
     "Hello World".to_string()
 }
